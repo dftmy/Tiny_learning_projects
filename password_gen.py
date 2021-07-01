@@ -1,5 +1,14 @@
 import secrets
 import string
-alphabet = string.ascii_letters + string.digits
-password = ''.join(secrets.choice(alphabet) for i in range(20))  # for a 20-character password
+import random
+
+length = random.randint(12,22)
+alphabet = string.ascii_letters + string.digits + string.punctuation
+
+while True:
+    password = ''.join(secrets.choice(alphabet) for i in range(length))
+    if length - (sum(c.isalnum() for c in password) >=3 and sum(c.isupper() for c in password) >=3):
+            break
+
+password = ''.join(random.sample(password, length)) #password reshuffle
 print(password)
