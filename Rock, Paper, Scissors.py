@@ -1,16 +1,15 @@
-
 # Rock, Paper, Scissors game with basic functionality
 # 1 - rock; 2 - paper; 3 - scissors;
-
-
 import random
 
 def user_input():
     print("Choose your fighter wisely. Type 1 to go with rock, 2 for paper and 3 for scissors")
-    user_choice = input()
-    user_choice = int(user_choice)
-    return user_choice
-
+    user_choice = (input())
+    while user_choice != "3" and user_choice != "2" and user_choice != "1":
+        print("Use valid input! Type 1 to go with rock, 2 for paper and 3 for scissors")
+        user_choice = (input())
+    return int(user_choice)
+    
 def computer_choice():   
     comp_choice = random.randrange(1,4)
     comp_choice = int(comp_choice)
@@ -35,5 +34,8 @@ def game_logic(user, computer):
         else:
             print("That's unfortunate but you've lost! Rock destroys scissors!")
 
-
-game_logic(user_input(), computer_choice())
+while True:
+    game_logic(user_input(), computer_choice())
+    play_again = input("Play again? (y/n): ")
+    if play_again.lower() != "y":
+        break
