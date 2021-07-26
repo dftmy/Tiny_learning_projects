@@ -76,4 +76,11 @@ sys_file.write(f"Total Bytes Received: {get_size(net_io.bytes_recv)}<br>")
 
 sys_file.write("<h2>Battery Information</h2>")
 bat_inf = psutil.sensors_battery()
-sys_file.write(f'{bat_inf}')
+sys_file.write(f'{bat_inf}<br>')
+
+procs = {p.pid: p.info for p in psutil.process_iter(['name', 'username'])}
+
+sys_file.write("<h1>List of PIDs</h1>")
+print(type(procs))
+for p in procs:
+    sys_file.write(f"Process: {procs[p]} <br>")
